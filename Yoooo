@@ -1,3 +1,56 @@
+-- [[ CENTU FARM - MOBILE ALL-IN-ONE ]]
+
+-- 1. KILL ALL SIDE NOTIFICATIONS
+local StarterGui = game:GetService("StarterGui")
+task.spawn(function()
+    while task.wait(0.1) do
+        pcall(function()
+            StarterGui:SetCore("SendNotification", {
+                Title = "Blocked",
+                Text = "Notifications Disabled",
+                Duration = 0.0001
+            })
+        end)
+    end
+end)
+
+-- 2. CREATE DRAGGABLE "CENTU FARM" TOGGLE
+local Player = game:GetService("Players").LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+
+local ScreenGui = Instance.new("ScreenGui", PlayerGui)
+ScreenGui.Name = "CentuFarmFix"
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local ToggleBtn = Instance.new("TextButton", ScreenGui)
+ToggleBtn.Size = UDim2.new(0, 110, 0, 45)
+ToggleBtn.Position = UDim2.new(0.1, 0, 0.15, 0) -- Top left area
+ToggleBtn.Text = "Centu Farm"
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 255) -- Bright Blue
+ToggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleBtn.Font = Enum.Font.SourceSansBold
+ToggleBtn.TextSize = 16
+ToggleBtn.Draggable = true -- Hold and move it anywhere!
+ToggleBtn.Active = true
+
+local Corner = Instance.new("UICorner", ToggleBtn)
+Corner.CornerRadius = UDim.new(0, 12)
+
+-- 3. THE "BANANA UI" FINDER (Toggles Script, NOT Game)
+ToggleBtn.MouseButton1Click:Connect(function()
+    for _, v in pairs(PlayerGui:GetChildren()) do
+        -- This looks for the script window specifically
+        if v:IsA("ScreenGui") and v.Name ~= "Main" and v.Name ~= "CentuFarmFix" then
+            if v:FindFirstChildOfClass("Frame") or v:FindFirstChild("Container") then
+                v.Enabled = not v.Enabled
+            end
+        end
+    end
+end)
+
+-- 4. YOUR YOOOO.TXT CODE BELOW
+task.spawn(function()
+    -- !!! PASTE THE ENTIRE CONTENTS OF YOUR YOOOO.TXT FILE HERE !!!
 -- ts file was generated at discord.gg/25ms
 
 if not game:IsLoaded() then
@@ -11516,3 +11569,4 @@ game.StarterGui:SetCore('SendNotification', {
     Icon = 'rbxassetid://5009915795',
     Duration = 8,
 })
+end)
