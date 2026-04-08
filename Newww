@@ -1,8 +1,9 @@
--- [[ CENTU FARM MOBILE TOGGLE ]] --
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+-- [[ CENTU FARM FIXED MOBILE TOGGLE ]] --
+local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
-local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
 
+-- 1. Create the Toggle Button
 local CentuBtn = Instance.new("ScreenGui")
 local Btn = Instance.new("ImageButton")
 CentuBtn.Name = "CentuFarmMobile"
@@ -10,19 +11,26 @@ CentuBtn.Parent = (gethui and gethui()) or CoreGui
 Btn.Parent = CentuBtn
 Btn.Size = UDim2.new(0, 50, 0, 50)
 Btn.Position = UDim2.new(0.1, 0, 0.4, 0)
-Btn.BackgroundColor3 = Color3.fromRGB(0, 255, 127)
+Btn.BackgroundColor3 = Color3.fromRGB(0, 255, 127) -- Bright Green
 Btn.Draggable = true
 Btn.Active = true
 Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 10)
 
+-- 2. Logic to ONLY toggle the Script (Fluent UI)
 Btn.MouseButton1Click:Connect(function()
-    -- This specific script usually creates a GUI named "Fluent" or "Main"
-    local TargetUI = PlayerGui:FindFirstChild("Centu Farm") or PlayerGui:FindFirstChild("Main") or PlayerGui:FindFirstChild("Fluent")
-    if TargetUI then
-        TargetUI.Enabled = not TargetUI.Enabled
+    local found = false
+    for _, v in pairs(PlayerGui:GetChildren()) do
+        -- We look for 'Fluent' which is the library you are using
+        -- We AVOID the one named 'Main' because that's the game's UI!
+        if v.Name == "Fluent" or v:FindFirstChild("CanvasGroup") then
+            if v.Name ~= "Main" then 
+                v.Enabled = not v.Enabled
+                found = true
+            end
+        end
     end
 end)
--- [[ END TOGGLE ]] --
+-- [[ END FIX ]] --
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
