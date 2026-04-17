@@ -11207,7 +11207,7 @@ Input = PVP:AddInput('Input', {
 game.StarterGui:SetCore('SendNotification', {
     Title = 'Yes Or No',
     Text = 'U want reset Config?',
-    Icon = 'rbxassetid://5009915795',
+    Icon = 'rbxassetid://119969353065486',
     Duration = 100000,
     Button1 = 'Yes',
     Button2 = 'No',
@@ -11240,7 +11240,7 @@ _ImageLabel.BackgroundTransparency = 1
 _ImageLabel.BorderSizePixel = 1
 _ImageLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
 _ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
-_ImageLabel.Image = 'http://www.roblox.com/asset/?id= 5009915795'
+_ImageLabel.Image = 'http://www.roblox.com/asset/?id= 119969353065486'
 _UICorner.CornerRadius = UDim.new(1, 0)
 _UICorner.Parent = _Frame
 _TextButton.Name = 'TextButton'
@@ -11544,6 +11544,6 @@ print('\u{2705} Smooth + Stable Anti-Lag Activated - Made by Hello')
 game.StarterGui:SetCore('SendNotification', {
     Title = 'UPDATE!',
     Text = 'Reduce Lag And Fixed Some Functions\u{2705}',
-    Icon = 'rbxassetid://5009915795',
+    Icon = 'rbxassetid://119969353065486',
     Duration = 8,
 })
