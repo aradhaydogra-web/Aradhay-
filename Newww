@@ -1,4 +1,4 @@
--- [[ CENTU FARM - LINE 1 ]] --
+-- [[ CENTU FARM - MOBILE LOGO & TOGGLE FIX ]] --
 local function CreateCentuButton()
     local CoreGui = game:GetService("CoreGui")
     local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -11,20 +11,27 @@ local function CreateCentuButton()
     Btn.Parent = CentuBtn
     Btn.Size = UDim2.new(0, 60, 0, 60)
     Btn.Position = UDim2.new(0.1, 0, 0.4, 0)
-    Btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Dark background so your logo looks professional
+    Btn.BorderSizePixel = 0
     
-    -- Using your Logo ID
+    -- Using your Logo ID with the proper Roblox header
     Btn.Image = "rbxassetid://119969353065486" 
+    Btn.ImageColor3 = Color3.fromRGB(255, 255, 255)
     
     Btn.Draggable = true
     Btn.Active = true
     Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 15)
     
+    -- The Logic to fix the "Banana Button" disappearing issue
     Btn.MouseButton1Click:Connect(function()
+        local found = false
         for _, v in pairs(PlayerGui:GetChildren()) do
-            -- Looks for the Fluent Menu, skips the Blox Fruit Game UI
+            -- Look for the Fluent UI Window specifically
             if v:IsA("ScreenGui") and v:FindFirstChild("CanvasGroup") and v.Name ~= "Main" then
                 v.Enabled = not v.Enabled
+                found = true
+                
+                -- Force the menu to be visible (fixes the closing glitch)
                 local Canvas = v:FindFirstChild("CanvasGroup")
                 if Canvas then
                     Canvas.GroupAlpha = 1
@@ -32,11 +39,20 @@ local function CreateCentuButton()
                 end
             end
         end
+        if not found then
+            print("Centu Farm: Menu not loaded yet!")
+        end
     end)
 end
 
+-- Run the button instantly
 task.spawn(CreateCentuButton)
--- [[ END OF BUTTON CODE ]] --
+
+-- Now the original script logic follows
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+-- [[ END OF TOP SECTION - REST OF SCRIPT STARTS BELOW ]] --
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
