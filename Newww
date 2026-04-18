@@ -1,36 +1,42 @@
--- [[ CENTU FARM FIXED MOBILE TOGGLE ]] --
-local Players = game:GetService("Players")
-local CoreGui = game:GetService("CoreGui")
-local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
-
--- 1. Create the Toggle Button
-local CentuBtn = Instance.new("ScreenGui")
-local Btn = Instance.new("ImageButton")
-CentuBtn.Name = "CentuFarmMobile"
-CentuBtn.Parent = (gethui and gethui()) or CoreGui
-Btn.Parent = CentuBtn
-Btn.Size = UDim2.new(0, 50, 0, 50)
-Btn.Position = UDim2.new(0.1, 0, 0.4, 0)
-Btn.BackgroundColor3 = Color3.fromRGB(0, 255, 127) -- Bright Green
-Btn.Draggable = true
-Btn.Active = true
-Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 10)
-
--- 2. Logic to ONLY toggle the Script (Fluent UI)
-Btn.MouseButton1Click:Connect(function()
-    local found = false
-    for _, v in pairs(PlayerGui:GetChildren()) do
-        -- We look for 'Fluent' which is the library you are using
-        -- We AVOID the one named 'Main' because that's the game's UI!
-        if v.Name == "Fluent" or v:FindFirstChild("CanvasGroup") then
-            if v.Name ~= "Main" then 
+-- [[ CENTU FARM - LINE 1 ]] --
+local function CreateCentuButton()
+    local CoreGui = game:GetService("CoreGui")
+    local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+    
+    local CentuBtn = Instance.new("ScreenGui")
+    CentuBtn.Name = "CentuFarmMobile"
+    CentuBtn.Parent = (gethui and gethui()) or CoreGui
+    
+    local Btn = Instance.new("ImageButton")
+    Btn.Parent = CentuBtn
+    Btn.Size = UDim2.new(0, 60, 0, 60)
+    Btn.Position = UDim2.new(0.1, 0, 0.4, 0)
+    Btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    
+    -- Using your Logo ID
+    Btn.Image = "rbxassetid://119969353065486" 
+    
+    Btn.Draggable = true
+    Btn.Active = true
+    Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 15)
+    
+    Btn.MouseButton1Click:Connect(function()
+        for _, v in pairs(PlayerGui:GetChildren()) do
+            -- Looks for the Fluent Menu, skips the Blox Fruit Game UI
+            if v:IsA("ScreenGui") and v:FindFirstChild("CanvasGroup") and v.Name ~= "Main" then
                 v.Enabled = not v.Enabled
-                found = true
+                local Canvas = v:FindFirstChild("CanvasGroup")
+                if Canvas then
+                    Canvas.GroupAlpha = 1
+                    Canvas.Visible = true
+                end
             end
         end
-    end
-end)
--- [[ END FIX ]] --
+    end)
+end
+
+task.spawn(CreateCentuButton)
+-- [[ END OF BUTTON CODE ]] --
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
@@ -3619,7 +3625,7 @@ Main:AddButton({
     Title = 'Copy discord invite link',
     Callback = function()
         pcall(function()
-            setclipboard('https://discord.gg/2YCGftRB')
+            setclipboard('https://discord.gg/282gcH6hx')
         end)
     end,
 })
