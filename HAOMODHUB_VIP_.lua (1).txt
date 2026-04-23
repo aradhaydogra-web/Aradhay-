@@ -18,8 +18,8 @@ elseif game.PlaceId == 100117331123089 or 7449423635 then
     print("🌊 Sea 3 - Third Sea")
 else
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "❌ Lỗi!";
-        Text = "Script chỉ hoạt động trong Blox Fruits!";
+        Title = "❌ Error!";
+        Text = "Centu Farm only works in Blox Fruits!";
         Duration = 5;
     })
     wait(3)
@@ -6631,7 +6631,7 @@ if World3 then
                                             game.StarterGui:SetCore("SendNotification", {
                                                 Title = "Tu\225\186\165n Anh IOS",
                                                 Text = "Use! - Yama or Tushita",
-                                                con = "rbxassetid://110657725541747",
+                                                con = "rbxassetid://125000942944091",
                                                 Duration = 10
                                             })
                                             v798 = true
@@ -9921,7 +9921,7 @@ RunService.RenderStepped:Connect(function()
     local now = tick()
     if now - lastUpdate >= 1 then
         local fps = math.floor(frameCount / (now - lastUpdate))
-        textLabel.Text = "FPS: " .. tostring(fps)
+        textLabel.Text = "Centu Farm | FPS: 0" .. tostring(fps)
         frameCount = 0
         lastUpdate = now
     end
