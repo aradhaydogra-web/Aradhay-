@@ -22,7 +22,7 @@ else
         Duration = 5;
     })
     wait(3)
-    error("Không phải game Blox Fruits!")
+    error("Not the Blox Fruits game!")
 end 
 function MaterialMon()
     if _G.SelectMaterial ~= "Radiactive Material" then
@@ -3712,11 +3712,11 @@ for i, url in ipairs(ui_urls) do
 end
     -- Nếu không load được, tạo UI backup đơn giản
 if not ui_loaded then
-    warn("❌ Không thể load UI library! Tạo UI backup...")
+    warn("❌ Failed to load UI library! Creating backup UI...")
     
     -- Tạo notification
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "⚠️ HAO MOD HUB - Lỗi!";
+        Title = "⚠️ CentuFarm - Error!";
         Text = "Không thể load UI!\nKRNL có thể không hỗ trợ HttpGet.\nThử executor khác!";
         Duration = 10;
     })
@@ -3777,28 +3777,20 @@ if not ui_loaded then
     infoText.Position = UDim2.new(0, 15, 0, 50)
     infoText.BackgroundTransparency = 1
     infoText.Text = [[
-❌ LỖI: Không thể load UI Library!
+❌ ERROR: Failed to load UI Library!
+📋 Possible causes:
+  • Your Executor does not support game:HttpGet()
+  • URL is blocked or inaccessible
+  • No internet connection
+  • GitHub/Pastefy is blocked
 
-📋 Nguyên nhân có thể:
-  • KRNL không hỗ trợ game:HttpGet()
-  • URL bị chặn hoặc không truy cập được
-  • Không có kết nối internet
-  • GitHub/Pastefy bị chặn
+✅ Solutions:
+  1. Use a better Executor:
+     - Solara, Fluxus, Wave, or Delta
+  2. Use a VPN if your region blocks it
+  3. Check your internet connection
 
-✅ Giải pháp:
-  1. Dùng Executor tốt hơn:
-     - Solara (FREE, tốt nhất)
-     - Fluxus (FREE)
-     - Wave (FREE)
-     - Delta (FREE)
-  
-  2. Bật VPN nếu ở Việt Nam
-  
-  3. Kiểm tra kết nối internet
-  
-  4. Liên hệ HaoMod để hỗ trợ
-
-⚠️ Script KHÔNG THỂ hoạt động với KRNL!
+⚠️ This script CANNOT work with KRNL!
 ]]
     infoText.TextColor3 = Color3.fromRGB(255, 255, 255)
     infoText.Font = Enum.Font.Gotham
@@ -3814,7 +3806,7 @@ end
 
 -- Thông báo load thành công
 game:GetService("StarterGui"):SetCore("SendNotification", {
-    Title = "✅ HAO MOD HUB";
+    Title = "✅CentuFarm";
     Text = "UI đã load thành công!\nChúc bạn farm vui vẻ!";
     Duration = 5;
 })
@@ -3875,7 +3867,7 @@ l_ImageButton_0.MouseButton1Click:Connect(function()
         v466:Minimize(true)
     end
 end)
-local v484 = v466:MakeTab({"Thông Tin | Info","rbxassetid://125000942944091"})
+local v484 = v466:MakeTab({"Information | Info","rbxassetid://125000942944091"})
 local v485 = v466:MakeTab({"Farming","rbxassetid://125000942944091"})
 local v486 = v466:MakeTab({"Auto Fishing","rbxassetid://125000942944091"})
 local v487 = v466:MakeTab({"Quest | Items","rbxassetid://125000942944091"})
